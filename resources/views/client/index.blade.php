@@ -2,8 +2,9 @@
 @extends('layout')
 @section('content')
 <div class="table-division table-common">
+<a class="btn btn-success" href="{{route('client.create')}}">Add Client</a>
                 <div class="table-responsive">
-                @if($column='') 
+                @if($columns=='') 
                     <span>No data found!! please insert some data!</span>
                 
                 @else 

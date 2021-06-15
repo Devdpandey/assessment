@@ -74,7 +74,16 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {   
-
+        $validated = $request->validate([
+            'name'  => 'required|min:2',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:7',
+            'gender'=> 'required|in:Male,Female,Other',
+            'address' => 'required',
+            'nationality' => 'required',
+            'dob' => 'required|date_format:Y-m-d|before:today',
+            'preffered_mode' => 'required|in:Email,Phone,None',
+            ]);
         $exists = Storage::disk('local')->exists('/exported-clients/clients-'.date('d-m-Y').'.csv');
         if($exists) {
             Excel::import('/exported-clients/clients-'.date('d-m-Y').'.csv', function($reader) 
@@ -87,7 +96,8 @@ class HomeController extends Controller
                 });
             })->export('csv');
             }
-        return Excel::store(new ClientsExport($request->all()), '/exported-clients/clients-'.date('d-m-Y').'.csv');
+        Excel::store(new ClientsExport($request->all()), '/exported-clients/clients-'.date('d-m-Y').'.csv');
+        return redirect('/')->with('success','client successfully added!');
     }
 
    
