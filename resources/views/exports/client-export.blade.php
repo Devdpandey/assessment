@@ -4,11 +4,11 @@
 <th>Name</th>
 <th>Gender</th>
 <th>Phone</th>
-<th>Email address</th>
+<th>Email</th>
 <th>Address</th>
 <th>Nationality</th>
 <th>DOB</th>
-<th>Preffered Mode of Contact</th>
+<th>Preffered_Contact</th>
 </tr>
 </thead>
 <tbody>

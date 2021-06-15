@@ -20,17 +20,18 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {  
-        $clients='';
+        $columns='';
+        $formdata='';
         $exists = Storage::disk('local')->exists('/exported-clients/clients-'.date('d-m-Y').'.csv');
         if($exists){
             $data = Storage::get('/exported-clients/clients-'.date('d-m-Y').'.csv');
             $clients = explode("\n", $data) ; // create an array of 2 entry (first line, and the rest).
             // dd($clients);
             $columns = $this->getColumnNames($clients);
-            $formData = $this->getColumnData($clients,$columns);
-            dd($formData);
+            $formdata = $this->getColumnData($clients,$columns);
+            // dd($formdata[0]);
         }
-       return view('client.index',compact('clients'));
+       return view('client.index',compact('columns','formdata'));
 
             	
     }
@@ -39,7 +40,6 @@ class HomeController extends Controller
         if(!$firstArray) return null;
         $column = array();
         $data = explode(",",$firstArray[0]);
-      
         foreach($data as $key => $heading){
             $column[] = $heading;
         }
@@ -76,7 +76,17 @@ class HomeController extends Controller
     {   
 
         $exists = Storage::disk('local')->exists('/exported-clients/clients-'.date('d-m-Y').'.csv');
-        if($exists) { dd('already cha');}
+        if($exists) {
+            Excel::import('/exported-clients/clients-'.date('d-m-Y').'.csv', function($reader) 
+            {
+                $reader->sheet(function($sheet) 
+                {
+                    $sheet->appendRow([
+                         $request->name, $request->gender,$request->phone,$request->email,$request->address,$request->nationality,$request->preffered_mode
+                     ]);
+                });
+            })->export('csv');
+            }
         return Excel::store(new ClientsExport($request->all()), '/exported-clients/clients-'.date('d-m-Y').'.csv');
     }
 
