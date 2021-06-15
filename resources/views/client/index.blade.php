@@ -25,6 +25,7 @@
                                 <th scope="col">{{$columns[5]}}</th>
                                 <th scope="col">{{$columns[6]}}</th>
                                 <th scope="col">{{$columns[7]}}</th>
+                                <th scope="col">Action</th>
                             </tr>
                                 </thead>
                          <tbody>
@@ -41,6 +42,10 @@
                                 <td>{{$usr[5]['"'."Nationality".'"']}}</td>
                                 <td>{{$usr[6]['"'."DOB".'"']}}</td>
                                 <td>{{$usr[7]['"'."Preffered_Contact".'"']}}</td>
+                                <td>
+                                <a href="{{url('/client/'.$key.'/edit')}}" class="btn btn-primary">Edit</a>
+                                <a href="{{url('/client/'.$key.'/delete')}}" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             @endif
                            

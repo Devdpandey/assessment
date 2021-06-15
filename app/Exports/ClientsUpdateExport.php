@@ -4,7 +4,7 @@ namespace App\Exports;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class ClientsExport implements  FromView
+class ClientsUpdateExport implements  FromView
 {
 
  protected $data;
@@ -15,7 +15,7 @@ class ClientsExport implements  FromView
 
     public function view(): View
     {    
-        return view('exports.client-export', [
+        return view('exports.client-update-export', [
             'data' => $this->data,
 
         ]);

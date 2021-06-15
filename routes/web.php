@@ -17,3 +17,6 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']); 
 Route::get('/create', [HomeController::class, 'create'])->name('client.create');
 Route::post('/store', [HomeController::class, 'store'])->name('client.store');
+Route::get('/client/{key}/edit', [HomeController::class, 'edit'])->name('client.edit');
+Route::post('/client/update', [HomeController::class, 'update'])->name('client.update');
+Route::get('/client/{key}/delete', [HomeController::class, 'delete'])->name('client.delete');

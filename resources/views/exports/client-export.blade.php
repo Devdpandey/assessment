@@ -17,7 +17,7 @@
     <td>{{$data['gender']}}</td>
     <td>{{$data['phone']}}</td>
     <td>{{$data['email']}}</td>
-    <td>{{$data['address']}}</td>
+    <td>{{str_replace(",","-",$data['address'])}}</td>
     <td>{{$data['nationality']}}</td>
     <td>{{$data['dob']}}</td>
     <td>{{$data['preffered_mode']}}</td>
