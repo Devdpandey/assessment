@@ -1,7 +1,9 @@
 @extends('layout')
 @section('content')
-<div class="col-md-6">
-<form method="POST" action="{{route('client.update')}}">
+<div class="col-md-12">
+<div class="clientform" style="max-width:550px;margin:0 auto;padding:30px;">
+<h1>Client Details</h1>
+<form method="POST" id="form" action="{{route('client.update')}}">
 @if ($errors->any())
         <div class="alert alert-danger">
         <ul>
@@ -48,18 +50,99 @@
 </div>
 <div class="form-group">
     <label for="contact">Preffered mode of contact</label>
-    <input type="radio" value="Email" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Email') checked @endif name="preffered_mode" id="contact">Email
-    <input type="radio" value="Phone" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Phone') checked @endif name="preffered_mode" id="contact">Phone
-    <input type="radio" value="None" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'None') checked @endif name="preffered_mode" id="contact">None
+    <div class="options">
+    <input type="radio" value="Email" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Email') checked @endif name="preffered_mode" id="contact"><label>Email</label>
+    </div>
+    <div class="options">
+    <input type="radio" value="Phone" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Phone') checked @endif name="preffered_mode" id="contact"><label>Phone</label>
+    </div>
+    <div class="options">
+    <input type="radio" value="None" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'None') checked @endif name="preffered_mode" id="contact"><label>None</label>
+    </div>
 </div>
+<div class="submitbtn">
 <button type="submit" class="btn btn-primary">Submit</button>
+</div>
 </form>
 </div>
+</div>
 
+<style>
+.options{
+    display:flex;
+    align-items:center;
+    width:300px;
+
+}
+
+.options input {
+    width: 20px;
+    margin: 0 10px 0 0;
+}
+
+.options label {
+    margin: 0;
+}
+
+.clientform h1{
+    font-size: 27px;
+    line-height: 32px;
+    margin: 0 0 25px;
+    text-align: center;
+
+}
+.submitbtn {
+    text-align: center;
+}
+.submitbtn button {
+    width: 150px;
+}
+
+</style>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script>
 $(document).ready(function() {
     $('[data-toggle="datepicker"]').datepicker({ format: 'YYYY-mm-dd' });
 
+});
+
+$(document).ready(function () {
+    $('#form').validate({ // initialize the plugin
+        rules: {
+            name: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            phone: {
+                required: true,
+                
+            },
+            address: {
+                required: true,
+                
+            },
+            gender: {
+                required: true,
+                
+            },
+            nationality: {
+                required: true,
+                
+            },
+            dob: {
+                required: true,
+                
+            },
+            preffered_mode: {
+                required: true,
+                
+            },
+        }
+    });
 });
 </script>
 @stop

@@ -12,6 +12,7 @@
 </tr>
 </thead>
 <tbody>
+@if($data['name']!='')
     <tr>
     <td>{{$data['name']}}</td>
     <td>{{$data['gender']}}</td>
@@ -22,5 +23,6 @@
     <td>{{$data['dob']}}</td>
     <td>{{$data['preffered_mode']}}</td>
     </tr>
+@endif
 </tbody>
 </table>

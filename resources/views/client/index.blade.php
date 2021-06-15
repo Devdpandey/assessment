@@ -1,10 +1,13 @@
 
 @extends('layout')
 @section('content')
-<div class="table-division table-common">
+<div class="action" style="display:inline-block;vertical-align:middle;width:100%;text-align:right;padding:10px">
 <a class="btn btn-success" href="{{route('client.create')}}">Add Client</a>
+</div>
+<div class="table-division table-common">
+
                 <div class="table-responsive">
-                @if($columns=='') 
+                @if($formdata =='' || $formdata[0][0]['"'."Name".'"']=='') 
                     <span>No data found!! please insert some data!</span>
                 
                 @else 
@@ -44,7 +47,7 @@
                                 <td>{{$usr[7]['"'."Preffered_Contact".'"']}}</td>
                                 <td>
                                 <a href="{{url('/client/'.$key.'/edit')}}" class="btn btn-primary">Edit</a>
-                                <a href="{{url('/client/'.$key.'/delete')}}" class="btn btn-danger">Delete</a>
+                                <a href="{{url('/client/'.$key.'/delete')}}" class="btn btn-danger delete">Delete</a>
                                 </td>
                             </tr>
                             @endif
@@ -55,5 +58,24 @@
                 @endif
                    
                 </div>
-            </div>    
+            </div> 
+
+<script>
+$('.delete').on("click", function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.value) {
+            window.location.href = $(this).attr('href');
+        }
+    });
+});
+</script>   
 @stop
