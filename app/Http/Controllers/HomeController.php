@@ -71,7 +71,7 @@ class HomeController extends Controller
             $formdata[$index][6]['"'."DOB".'"']= $request->dob;
             $formdata[$index][7]['"'."Preffered_Contact".'"']= $request->preffered_mode;
             Excel::store(new ClientsUpdateExport($formdata), '/exported-clients/clients-'.date('d-m-Y').'.csv');
-            return redirect('/')->with('success','client updated successfully!!');
+            return redirect('/')->with('success','client added successfully!!');
             
             }
         Excel::store(new ClientsExport($request->all()), '/exported-clients/clients-'.date('d-m-Y').'.csv');
