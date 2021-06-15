@@ -51,6 +51,7 @@ class HomeController extends Controller
             'gender'=> 'required|in:Male,Female,Other',
             'address' => 'required',
             'nationality' => 'required',
+            'education' => 'required',
             'dob' => 'required|date_format:Y-m-d|before:today',
             'preffered_mode' => 'required|in:Email,Phone,None',
             ]);
@@ -69,7 +70,8 @@ class HomeController extends Controller
             $formdata[$index][4]['"'."Address".'"']= str_replace(",","-",$request->address);
             $formdata[$index][5]['"'."Nationality".'"']= $request->nationality;
             $formdata[$index][6]['"'."DOB".'"']= $request->dob;
-            $formdata[$index][7]['"'."Preffered_Contact".'"']= $request->preffered_mode;
+            $formdata[$index][7]['"'."Education".'"']= $request->education;
+            $formdata[$index][8]['"'."Preffered_Contact".'"']= $request->preffered_mode;
             Excel::store(new ClientsUpdateExport($formdata), '/exported-clients/clients-'.date('d-m-Y').'.csv');
             return redirect('/')->with('success','client added successfully!!');
             
@@ -98,6 +100,7 @@ class HomeController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:7',
             'gender'=> 'required|in:Male,Female,Other',
             'address' => 'required',
+            'education' => 'required',
             'nationality' => 'required',
             'dob' => 'required|date_format:Y-m-d|before:today',
             'preffered_mode' => 'required|in:Email,Phone,None',
@@ -116,7 +119,8 @@ class HomeController extends Controller
             $formdata[$request->key][4]['"'."Address".'"']= str_replace(",","-",$request->address);
             $formdata[$request->key][5]['"'."Nationality".'"']= $request->nationality;
             $formdata[$request->key][6]['"'."DOB".'"']= $request->dob;
-            $formdata[$request->key][7]['"'."Preffered_Contact".'"']= $request->preffered_mode;
+            $formdata[$request->key][7]['"'."Education".'"']= $request->education;
+            $formdata[$request->key][8]['"'."Preffered_Contact".'"']= $request->preffered_mode;
             // dd($formdata);
             Excel::store(new ClientsUpdateExport($formdata), '/exported-clients/clients-'.date('d-m-Y').'.csv');
             return redirect('/')->with('success','client updated successfully!!');

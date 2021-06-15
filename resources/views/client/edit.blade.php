@@ -49,15 +49,19 @@
     <input type="text" class="form-control" name="dob" value="{{str_replace('"','',$formdata[6]['"'."DOB".'"'])}}" data-toggle="datepicker" readonly id="dob">
 </div>
 <div class="form-group">
+    <label for="education">Education Background</label>
+    <input type="text" class="form-control" name="education" value="{{str_replace('"','',$formdata[7]['"'."Education".'"'])}}" id="education" placeholder="Enter education background">
+</div>
+<div class="form-group">
     <label for="contact">Preffered mode of contact</label>
     <div class="options">
-    <input type="radio" value="Email" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Email') checked @endif name="preffered_mode" id="contact"><label>Email</label>
+    <input type="radio" value="Email" class="form-control" @if(str_replace('"','',$formdata[8]['"'."Preffered_Contact".'"']) == 'Email') checked @endif name="preffered_mode" id="contact"><label>Email</label>
     </div>
     <div class="options">
-    <input type="radio" value="Phone" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'Phone') checked @endif name="preffered_mode" id="contact"><label>Phone</label>
+    <input type="radio" value="Phone" class="form-control" @if(str_replace('"','',$formdata[8]['"'."Preffered_Contact".'"']) == 'Phone') checked @endif name="preffered_mode" id="contact"><label>Phone</label>
     </div>
     <div class="options">
-    <input type="radio" value="None" class="form-control" @if(str_replace('"','',$formdata[7]['"'."Preffered_Contact".'"']) == 'None') checked @endif name="preffered_mode" id="contact"><label>None</label>
+    <input type="radio" value="None" class="form-control" @if(str_replace('"','',$formdata[8]['"'."Preffered_Contact".'"']) == 'None') checked @endif name="preffered_mode" id="contact"><label>None</label>
     </div>
 </div>
 <div class="submitbtn">
@@ -122,6 +126,10 @@ $(document).ready(function () {
                 
             },
             address: {
+                required: true,
+                
+            },
+            education: {
                 required: true,
                 
             },

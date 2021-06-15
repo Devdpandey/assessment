@@ -8,6 +8,7 @@
 <th>Address</th>
 <th>Nationality</th>
 <th>DOB</th>
+<th>Education</th>
 <th>Preffered_Contact</th>
 </tr>
 </thead>
@@ -21,6 +22,7 @@
     <td>{{str_replace(",","-",$data['address'])}}</td>
     <td>{{$data['nationality']}}</td>
     <td>{{$data['dob']}}</td>
+    <td>{{$data['education']}}</td>
     <td>{{$data['preffered_mode']}}</td>
     </tr>
 @endif

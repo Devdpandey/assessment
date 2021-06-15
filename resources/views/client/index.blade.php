@@ -28,6 +28,7 @@
                                 <th scope="col">{{$columns[5]}}</th>
                                 <th scope="col">{{$columns[6]}}</th>
                                 <th scope="col">{{$columns[7]}}</th>
+                                <th scope="col">{{$columns[8]}}</th>
                                 <th scope="col">Action</th>
                             </tr>
                                 </thead>
@@ -44,7 +45,8 @@
                                 <td>{{$usr[4]['"'."Address".'"']}}</td>
                                 <td>{{$usr[5]['"'."Nationality".'"']}}</td>
                                 <td>{{$usr[6]['"'."DOB".'"']}}</td>
-                                <td>{{$usr[7]['"'."Preffered_Contact".'"']}}</td>
+                                <td>{{$usr[7]['"'."Education".'"']}}</td>
+                                <td>{{$usr[8]['"'."Preffered_Contact".'"']}}</td>
                                 <td>
                                 <a href="{{url('/client/'.$key.'/edit')}}" class="btn btn-primary">Edit</a>
                                 <a href="{{url('/client/'.$key.'/delete')}}" class="btn btn-danger delete">Delete</a>

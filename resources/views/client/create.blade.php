@@ -48,6 +48,10 @@
     <input type="text" class="form-control" name="dob" value="{{old('dob')}}" data-toggle="datepicker" readonly id="dob">
 </div>
 <div class="form-group">
+    <label for="education">Education Background</label>
+    <input type="text" class="form-control" name="education" value="{{old('education')}}" id="education" placeholder="Enter education background">
+</div>
+<div class="form-group">
 
     <label for="contact">Preffered mode of contact</label>
     <div class="options">
@@ -122,6 +126,10 @@ $(document).ready(function () {
                 
             },
             address: {
+                required: true,
+                
+            },
+            education: {
                 required: true,
                 
             },
